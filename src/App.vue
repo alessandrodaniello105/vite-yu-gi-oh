@@ -2,7 +2,7 @@
 import axios from 'axios';
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
-import { store } from './components/data/store';
+import { store } from './data/store';
 
 export default {
   name: 'App',
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <template>
-  
+
   <Header />
 
   <Main />
