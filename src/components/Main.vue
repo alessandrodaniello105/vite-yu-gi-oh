@@ -12,15 +12,19 @@ export default {
   data() {
     return {
       store,
+      filterStr: ''
     };
   },
   methods: {
     testCycle() {
       console.log(this.store.cardsList)
+    },
+    filterAPI() {
+      store.urlAPI = `${store.urlAPI}&archetype=${this.filterStr}`
     }
   },
   mounted() {
-    setTimeout(this.testCycle,1500)
+    setTimeout(this.testCycle,1500);
   }
 };
 </script>
@@ -29,7 +33,10 @@ export default {
   <main>
     <div class="container">
 
-      <FilterSel />
+      <FilterSel
+        v-model="filterStr" 
+        @select="this.filterAPI()"
+      />
 
       <div class="row">
         <ProductionCards

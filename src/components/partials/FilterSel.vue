@@ -1,6 +1,16 @@
 <script>
 export default {
-  name: 'FilterSel'
+  name: 'FilterSel',
+  data() {
+    return {
+      filterStr: ''
+    }
+  },
+  methods: {
+    testClick() {  
+    console.log(this.filterStr);
+    }
+  }
 }
 </script>
 
@@ -9,14 +19,15 @@ export default {
     <span>Sono la tua search-bar preferita!</span>
 
     <select
+      v-model="filterStr"
       class="form-select"
       aria-label="Default select example"
       name="archetype"
       id="archetype">
       <option selected>Select Archetype</option>
-      <option value="1">Alien</option>
-      <option value="2">Noble Knight</option>
-      <option value="3">Sinful Spoils</option>
+      <option @click="this.testClick" value="Alien">Alien</option>
+      <option @click="this.testClick" value="Noble Knight">Noble Knight</option>
+      <option @click="this.testClick" value="Sinful Spoils">Sinful Spoils</option>
     </select>
 
   </div>

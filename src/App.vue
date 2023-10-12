@@ -18,10 +18,10 @@ export default {
   },
 
   methods: {
-    getAPI() {
-      axios.get(store.urlAPI)
+    getAPI(param) {
+      axios.get(param)
         .then( res => {
-          this.store.cardsList = res.data.data;
+          store.cardsList = res.data.data;
           // console.log(this.store.cardsList);
         })
         .catch( err => {
@@ -32,11 +32,13 @@ export default {
 
   mounted() {
     
-    this.getAPI();
+    this.getAPI(store.urlAPI);
+
+    console.log(`${store.urlAPI}&archetype=alien`);
 
     // arrays seems to be empty because of async functions (ajax request)
     setTimeout(()=>
-    console.log(this.store.cardsList),1500)
+    console.log(this.store.cardsList),1500);
 
   }
 
