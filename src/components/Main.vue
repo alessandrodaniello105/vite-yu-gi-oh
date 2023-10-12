@@ -30,8 +30,9 @@ export default {
         <ProductionCards
           v-for="card in store.cardsList"
           :key="card.id"
-          :image="card.card_images.image_url"
+          :image="`https://images.ygoprodeck.com/images/cards/${card.id}.jpg`"
           :name="card.name"
+          :archetype="card.archetype"
         />
       </div>
     </div>
@@ -39,4 +40,20 @@ export default {
 </template>
 
 <style lang="scss">
+
+@use '../scss/partials/vars' as *;
+
+main {
+  background-color: $primary-color;
+  .container {
+    margin-top: 100px;
+    background-color: white;
+    .row {
+      padding: 50px;
+    }
+  }
+  
+}
+
+
 </style>
