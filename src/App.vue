@@ -21,15 +21,21 @@ export default {
     getAPI() {
       axios.get(store.urlAPI)
         .then( res => {
-          res.data = this.store.cardsList
+          this.store.cardsList = res.data;
+          // console.log(this.store.cardsList);
+        })
+        .catch( err => {
+          console.log(err.code);
         })
     }
   },
 
   mounted() {
     
-    this.getAPI()
-    console.log(this.store.cardsList)
+    this.getAPI();
+    setTimeout(()=>
+    console.log(this.store.cardsList),1500)
+
   }
 
 }
