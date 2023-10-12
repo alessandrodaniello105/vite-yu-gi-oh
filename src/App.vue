@@ -21,7 +21,7 @@ export default {
     getAPI() {
       axios.get(store.urlAPI)
         .then( res => {
-          this.store.cardsList = res.data;
+          this.store.cardsList = res.data.data;
           // console.log(this.store.cardsList);
         })
         .catch( err => {
@@ -33,6 +33,8 @@ export default {
   mounted() {
     
     this.getAPI();
+
+    // arrays seems to be empty because of async functions (ajax request)
     setTimeout(()=>
     console.log(this.store.cardsList),1500)
 
