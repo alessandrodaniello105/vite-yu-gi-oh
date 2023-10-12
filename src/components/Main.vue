@@ -1,11 +1,13 @@
 <script>
+import { store } from "../data/store";
 import ProductionCards from "./ProductionCards.vue";
-import { store } from "./data/store.js";
+import FilterSel from './partials/FilterSel.vue'
 
 export default {
   name: "Main",
   components: {
     ProductionCards,
+    FilterSel
   },
   data() {
     return {
@@ -26,6 +28,9 @@ export default {
 <template>
   <main>
     <div class="container">
+
+      <FilterSel />
+
       <div class="row">
         <ProductionCards
           v-for="card in store.cardsList"
@@ -35,6 +40,7 @@ export default {
           :archetype="card.archetype"
         />
       </div>
+
     </div>
   </main>
 </template>
