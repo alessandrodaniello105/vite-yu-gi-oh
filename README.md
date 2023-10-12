@@ -1,2 +1,0 @@
-Vite Yu-Gi-Oh
-===
