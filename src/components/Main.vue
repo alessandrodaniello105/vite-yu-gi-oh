@@ -35,7 +35,10 @@ export default {
         .catch( err => {
           console.log(err.code);
         })
-    }
+    },
+
+    
+
   },
   mounted() {
     setTimeout(this.testCycle,1500);

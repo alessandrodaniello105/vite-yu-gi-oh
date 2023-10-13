@@ -26,6 +26,7 @@ export default {
           // console.log(this.store.cardsList);
           
           this.getArchetypes('https://db.ygoprodeck.com/api/v7/archetypes.php')
+          this.getTypes()
         })
         .catch( err => {
           console.log(err.code);
@@ -41,16 +42,15 @@ export default {
           console.log(err.code)
         })
     },
-    getTypes(param) {
-      axios.get(param)
-        .then( res => {
-          store.typesList = res.data
-          store.cardsTotal = store.cardsList.length
-          console.log(store.archetypesList)
-        })
-        .catch( err => {
-          console.log(err.code)
-        })
+    getTypes() {
+      store.cardsList.forEach(el => {
+        if(!store.typesList.includes(el.type)) {
+          store.typesList.push(el.type)
+        }
+        
+      })
+      console.log(store.typesList)
+      
     }
   },
 
