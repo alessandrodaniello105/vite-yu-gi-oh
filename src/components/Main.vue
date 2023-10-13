@@ -85,4 +85,10 @@ main {
 }
 
 
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1550px !important; 
+  }
+}
+
 </style>
