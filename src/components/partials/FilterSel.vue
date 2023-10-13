@@ -7,7 +7,8 @@ export default {
   data() {
     return {
       store,
-      filterStr: 'Select Archetype'
+      filterStr: 'Select Archetype',
+      typeStr: 'Select Type'
     }
   },
   methods: {
@@ -47,6 +48,16 @@ export default {
     <span>Sono la tua search-bar preferita!</span>
 
     <select
+      v-model="typeStr"
+      class="form-select"
+      aria-label="Default select example"
+      >
+      <option @click="this.startFilter" selected>Select Type</option>
+      <option v-for="(element, index) in store.archetypesList" :key="index" @click="this.startFilter" :value="element.archetype_name">{{element.archetype_name}}</option>
+
+    </select>
+    
+    <select
       v-model="filterStr"
       class="form-select"
       aria-label="Default select example"
@@ -55,6 +66,11 @@ export default {
       <option v-for="(element, index) in store.archetypesList" :key="index" @click="this.startFilter" :value="element.archetype_name">{{element.archetype_name}}</option>
 
     </select>
+
+    <div>
+      <button class="btn btn-danger"></button>
+    </div>
+
 
   </div>
 </template>

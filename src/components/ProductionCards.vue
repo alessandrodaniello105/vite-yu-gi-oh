@@ -4,6 +4,7 @@ export default {
   props: {
     name: String,
     archetype: String,
+    type: String,
     id: Number,
     image: String
   }
@@ -18,9 +19,23 @@ export default {
 
       <div class="text-box">
         <h3 class="title">{{ name }}</h3>
-        <p>{{ archetype }}</p>
       </div>
+      <div class="sub-text-box">
 
+        <p>
+          <strong>Type:</strong> {{ type }}
+        </p>
+        
+        <p v-if="archetype">
+          <strong>Archetype:</strong> {{ archetype }}
+        </p>
+
+        <p v-else>
+          <strong>Archetype:</strong> none
+        </p>
+
+      </div>
+        
     </div>
   </div>
 </template>
@@ -29,17 +44,22 @@ export default {
 @use '../scss/partials/vars' as *;
 
 .card_ctm {
+
   position: relative;
   text-align: center;
   background-color: $primary-color;
   min-height: 550px;
   .text-box {
     padding: 5px;
+    position: relative;
+    height: 100%;
+  }
+  .sub-text-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     p {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+      padding: 0 5px;
       font-size: 20px;
     }
   }
