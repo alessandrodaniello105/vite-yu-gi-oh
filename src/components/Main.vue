@@ -55,12 +55,15 @@ export default {
       
 
       <div class="row">
+
+
         <ProductionCards
           v-for="card in store.cardsList"
           :key="card.id"
           :image="`https://images.ygoprodeck.com/images/cards/${card.id}.jpg`"
           :name="card.name"
           :archetype="card.archetype"
+          :type="card.type"
         />
       </div>
 

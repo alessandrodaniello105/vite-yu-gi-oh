@@ -36,12 +36,22 @@ export default {
         .then( res => {
           store.archetypesList = res.data
           store.cardsTotal = store.cardsList.length
-          console.log(store.archetypesList)
         })
         .catch( err => {
           console.log(err.code)
         })
     },
+    getTypes(param) {
+      axios.get(param)
+        .then( res => {
+          store.typesList = res.data
+          store.cardsTotal = store.cardsList.length
+          console.log(store.archetypesList)
+        })
+        .catch( err => {
+          console.log(err.code)
+        })
+    }
   },
 
   mounted() {
