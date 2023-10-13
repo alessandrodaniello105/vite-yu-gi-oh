@@ -23,11 +23,23 @@ export default {
         .then( res => {
           store.cardsList = res.data.data;
           // console.log(this.store.cardsList);
+          
+          this.getArchetypes('https://db.ygoprodeck.com/api/v7/archetypes.php')
         })
         .catch( err => {
           console.log(err.code);
         })
-    }
+    },
+    getArchetypes(param) {
+      axios.get(param)
+        .then( res => {
+          store.archetypesList = res.data
+          console.log(store.archetypesList)
+        })
+        .catch( err => {
+          console.log(err.code)
+        })
+    },
   },
 
   mounted() {

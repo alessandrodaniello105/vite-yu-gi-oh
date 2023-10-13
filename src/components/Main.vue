@@ -21,11 +21,7 @@ export default {
     testCycle() {
       console.log(this.store.cardsList)
     },
-    filterAPI() {
-      // store.urlAPI = `${store.urlAPI}&archetype=${this.filterStr}`
-      console.log(this.filterAPI())
-      console.log(`${store.urlAPI}&archetype=${this.filterStr}`)
-    },
+
     getAPI(param) {
       axios.get(param)
         .then( res => {

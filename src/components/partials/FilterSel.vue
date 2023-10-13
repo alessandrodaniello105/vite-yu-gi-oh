@@ -16,11 +16,14 @@ export default {
         .then( res => {
           store.cardsList = res.data.data;
           // console.log(this.store.cardsList);
+
+          
         })
         .catch( err => {
           console.log(err.code);
         })
     },
+
     startFilter() {  
       console.log(this.filterStr)
       if(this.filterStr == "Select Archetype") {
@@ -47,9 +50,8 @@ export default {
       aria-label="Default select example"
       >
       <option @click="this.startFilter" selected>Select Archetype</option>
-      <option @click="this.startFilter" value="Alien">Alien</option>
-      <option @click="this.startFilter" value="Noble Knight">Noble Knight</option>
-      <option @click="this.startFilter" value="Sinful Spoils">Sinful Spoils</option>
+      <option v-for="(element, index) in store.archetypesList" :key="index" @click="this.startFilter" :value="element.archetype_name">{{element.archetype_name}}</option>
+
     </select>
 
   </div>
