@@ -6,8 +6,10 @@ export default {
 
 <template>
   <header>
-    <img src="#" alt="">
-    <h1>Yu-Gi-Oh API</h1>
+    <div class="img-box">
+      <img src="/logo.png" alt="">
+    </div>
+    <h1 class="text-ctm">Yu-Gi-Oh API</h1>
   </header>
 </template>
 
@@ -17,5 +19,17 @@ header {
   background-color: #FFFFFF;
   position: absolute;
   top: 0;
+  display: flex;
+  align-items: center;
+  .img-box {
+    align-self: center;
+      vertical-align: middle;
+      height: 45%;
+    img {
+      vertical-align: middle;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 }
 </style>
