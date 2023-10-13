@@ -1,14 +1,37 @@
 <script>
+import axios from 'axios';
+import {store} from '../../data/store'
+
 export default {
   name: 'FilterSel',
   data() {
     return {
-      filterStr: ''
+      store,
+      filterStr: 'Select Archetype'
     }
   },
   methods: {
-    testClick() {  
-    console.log(this.filterStr);
+    getAPI(param) {
+      axios.get(param)
+        .then( res => {
+          store.cardsList = res.data.data;
+          // console.log(this.store.cardsList);
+        })
+        .catch( err => {
+          console.log(err.code);
+        })
+    },
+    startFilter() {  
+      console.log(this.filterStr)
+      if(this.filterStr == "Select Archetype") {
+        store.urlAPI = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0';
+        this.getAPI(store.urlAPI)
+      }else {
+        store.urlAPI = `https://db.ygoprodeck.com/api/v7/cardinfo.php?&archetype=${this.filterStr}`;
+        this.getAPI(store.urlAPI)
+      }
+      
+      console.log('nuovo url', store.urlAPI)
     }
   }
 }
@@ -22,12 +45,11 @@ export default {
       v-model="filterStr"
       class="form-select"
       aria-label="Default select example"
-      name="archetype"
-      id="archetype">
-      <option selected>Select Archetype</option>
-      <option @click="this.testClick" value="Alien">Alien</option>
-      <option @click="this.testClick" value="Noble Knight">Noble Knight</option>
-      <option @click="this.testClick" value="Sinful Spoils">Sinful Spoils</option>
+      >
+      <option @click="this.startFilter" selected>Select Archetype</option>
+      <option @click="this.startFilter" value="Alien">Alien</option>
+      <option @click="this.startFilter" value="Noble Knight">Noble Knight</option>
+      <option @click="this.startFilter" value="Sinful Spoils">Sinful Spoils</option>
     </select>
 
   </div>
@@ -37,8 +59,12 @@ export default {
 @use '../../scss/partials/vars' as *;
 
 .filter-selector {
+  font-weight: bold;
+  color: white;
   background-color: $primary-color;
+  padding: 15px 0;
   select {
+    margin: 5px 0;
     width: 200px;
   }
 } 

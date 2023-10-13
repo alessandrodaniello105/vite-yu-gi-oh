@@ -34,7 +34,7 @@ export default {
     
     this.getAPI(store.urlAPI);
 
-    console.log(`${store.urlAPI}&archetype=alien`);
+    // console.log(`${store.urlAPI}&archetype=alien`);
 
     // arrays seems to be empty because of async functions (ajax request)
     setTimeout(()=>
@@ -50,7 +50,7 @@ export default {
   <Header />
 
   <Main />
-  
+
 </template>
 
 <style lang="scss">

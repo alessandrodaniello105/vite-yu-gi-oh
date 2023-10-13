@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import { store } from "../data/store";
 import ProductionCards from "./ProductionCards.vue";
 import FilterSel from './partials/FilterSel.vue'
@@ -12,15 +13,28 @@ export default {
   data() {
     return {
       store,
-      filterStr: ''
-    };
+      filterStr: 'Select Archetype'
+    }
   },
+
   methods: {
     testCycle() {
       console.log(this.store.cardsList)
     },
     filterAPI() {
-      store.urlAPI = `${store.urlAPI}&archetype=${this.filterStr}`
+      // store.urlAPI = `${store.urlAPI}&archetype=${this.filterStr}`
+      console.log(this.filterAPI())
+      console.log(`${store.urlAPI}&archetype=${this.filterStr}`)
+    },
+    getAPI(param) {
+      axios.get(param)
+        .then( res => {
+          store.cardsList = res.data.data;
+          // console.log(this.store.cardsList);
+        })
+        .catch( err => {
+          console.log(err.code);
+        })
     }
   },
   mounted() {
@@ -31,12 +45,11 @@ export default {
 
 <template>
   <main>
-    <div class="container">
+    <div class="container p-0">
 
       <FilterSel
-        v-model="filterStr" 
-        @select="this.filterAPI()"
       />
+      
 
       <div class="row">
         <ProductionCards
