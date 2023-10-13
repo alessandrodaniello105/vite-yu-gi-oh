@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <div class="col-3 my-3">
+  <div class="col-6 col-lg-3 col-xl-2 my-3">
     <div class="card_ctm">
 
       <img :src="image" :alt="name">
