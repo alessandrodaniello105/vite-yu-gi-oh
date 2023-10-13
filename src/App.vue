@@ -22,6 +22,7 @@ export default {
       axios.get(param)
         .then( res => {
           store.cardsList = res.data.data;
+          store.cardsTotal = store.cardsList.length
           // console.log(this.store.cardsList);
           
           this.getArchetypes('https://db.ygoprodeck.com/api/v7/archetypes.php')
@@ -34,6 +35,7 @@ export default {
       axios.get(param)
         .then( res => {
           store.archetypesList = res.data
+          store.cardsTotal = store.cardsList.length
           console.log(store.archetypesList)
         })
         .catch( err => {

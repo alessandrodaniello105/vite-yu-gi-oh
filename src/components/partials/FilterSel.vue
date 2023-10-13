@@ -15,6 +15,8 @@ export default {
       axios.get(param)
         .then( res => {
           store.cardsList = res.data.data;
+          store.cardsTotal = store.cardsList.length
+
           // console.log(this.store.cardsList);
 
           

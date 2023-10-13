@@ -3,12 +3,14 @@ import axios from 'axios';
 import { store } from "../data/store";
 import ProductionCards from "./ProductionCards.vue";
 import FilterSel from './partials/FilterSel.vue'
+import Results from './partials/Results.vue';
 
 export default {
   name: "Main",
   components: {
     ProductionCards,
-    FilterSel
+    FilterSel,
+    Results
   },
   data() {
     return {
@@ -26,6 +28,8 @@ export default {
       axios.get(param)
         .then( res => {
           store.cardsList = res.data.data;
+          store.cardsTotal = store.cardsList.length
+
           // console.log(this.store.cardsList);
         })
         .catch( err => {
@@ -43,8 +47,11 @@ export default {
   <main>
     <div class="container p-0">
 
-      <FilterSel
-      />
+
+      <FilterSel />
+
+      <Results :cardsNum="store.cardsTotal" />
+
       
 
       <div class="row">
